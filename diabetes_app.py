@@ -30,7 +30,7 @@ with col2:
 st.markdown("___")
 
 # Predict button
-st.button("🔍 Predict"):
+if st.button("🔍 Predict"):
     # Prepare the input
     input_data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DPF, Age]])
     scaled_data = scaler.transform(input_data)
