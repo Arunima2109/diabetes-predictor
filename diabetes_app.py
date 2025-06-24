@@ -55,11 +55,16 @@ if 'prediction_result' in st.session_state:
     else:
         st.success("✅ The person is **not diabetic**.")
 
-# Optional info
+
 with st.expander("ℹ️ About this app"):
     st.write("""
         - This app uses an SVM model trained on the PIMA Indians Diabetes Dataset.
         - Inputs are standardized using the same scaler from training.
         - The prediction is a machine learning estimate, not a medical diagnosis.
         - If diabetic, please consult a certified doctor for confirmation and treatment.
+    """)
+
+with st.expander("ℹ️ Built By:"):
+    st.write("""
+        - Arunima Pingali
     """)
