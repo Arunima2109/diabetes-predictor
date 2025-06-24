@@ -30,7 +30,7 @@ with col2:
 st.markdown("___")
 
 # Predict button
-if st.button("🔍 Predict"):
+st.button("🔍 Predict"):
     # Prepare the input
     input_data = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DPF, Age]])
     scaled_data = scaler.transform(input_data)
@@ -39,7 +39,6 @@ if st.button("🔍 Predict"):
     # Output
     if prediction[0] == 1:
         st.error("🚨 The person is **diabetic**.")
-
         # Ask for location and suggest doctors
         location = st.text_input("📍 Enter your city to find nearby doctors")
 
