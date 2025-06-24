@@ -36,10 +36,15 @@ if st.button("🔍 Predict"):
     scaled_data = scaler.transform(input_data)
     prediction = model.predict(scaled_data)
 
-    # Output
-    if prediction[0] == 1:
+    # Store prediction in session_state
+    st.session_state['prediction_result'] = prediction[0]
+
+# Display result and location input after prediction
+if 'prediction_result' in st.session_state:
+    if st.session_state['prediction_result'] == 1:
         st.error("🚨 The person is **diabetic**.")
-        # Ask for location and suggest doctors
+
+        # Show location input
         location = st.text_input("📍 Enter your city to find nearby doctors")
 
         if location:
@@ -47,7 +52,6 @@ if st.button("🔍 Predict"):
                 f"🔎 [Search for diabetologists in {location}](https://www.google.com/search?q=diabetologist+in+{location})",
                 unsafe_allow_html=True
             )
-
     else:
         st.success("✅ The person is **not diabetic**.")
 
