@@ -27,7 +27,6 @@ with col2:
     DPF = st.number_input("Diabetes Pedigree Function", min_value=0.0, format="%.3f")
     Age = st.number_input("Age", min_value=1)
 
-# Add a horizontal rule
 st.markdown("___")
 
 # Predict button
@@ -40,6 +39,16 @@ if st.button("🔍 Predict"):
     # Output
     if prediction[0] == 1:
         st.error("🚨 The person is **diabetic**.")
+
+        # Ask for location and suggest doctors
+        location = st.text_input("📍 Enter your city to find nearby doctors")
+
+        if location:
+            st.markdown(
+                f"🔎 [Search for diabetologists in {location}](https://www.google.com/search?q=diabetologist+in+{location})",
+                unsafe_allow_html=True
+            )
+
     else:
         st.success("✅ The person is **not diabetic**.")
 
@@ -47,6 +56,7 @@ if st.button("🔍 Predict"):
 with st.expander("ℹ️ About this app"):
     st.write("""
         - This app uses an SVM model trained on the PIMA Indians Diabetes Dataset.
-        - It standardizes input using the same scaler as the training phase.
-        - Consider visitng a doctor for accurate testing and further treatments.
+        - Inputs are standardized using the same scaler from training.
+        - The prediction is a machine learning estimate, not a medical diagnosis.
+        - If diabetic, please consult a certified doctor for confirmation and treatment.
     """)
